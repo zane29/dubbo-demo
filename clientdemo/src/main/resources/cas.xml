@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans        http://www.springframework.org/schema/beans/spring-beans.xsd        http://code.alibabatech.com/schema/dubbo        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!-- 消费方应用名，用于计算依赖关系，不是匹配条件，不要与提供方一样 -->
+    <dubbo:application name="cas-dubbo-server12"  />
+
+    <!-- 使用ZooKeeper注册中心暴露服务地址。支持zkclient和curator两种Zookeeper客户端实现，这里使用zkclient。 -->
+    <dubbo:registry address="zookeeper://10.10.9.103:2181?client=zkclient" />
+
+    <!-- 生成远程服务代理，可以和本地bean一样使用demoService  url="dubbo://localhost:20801"-->
+    <!--<dubbo:reference id="iUserService" interface="com.goldmsg.leusysm.base.casrpc.rpc.IUserService" version="1.0" protocol="dubbo"/>-->
+    <dubbo:reference id="iUserService" interface="com.goldmsg.leusysm.base.casrpc.rpc.IUserService"  protocol="dubbo"/>
+    <!--<dubbo:reference id="iOrgService" interface="com.goldmsg.leusysm.base.casrpc.rpc.IOrgService" version="1.0" protocol="dubbo"/>-->
+    <dubbo:reference id="iOrgService" interface="com.goldmsg.leusysm.base.casrpc.rpc.IOrgService" protocol="dubbo"/>
+
+</beans>
